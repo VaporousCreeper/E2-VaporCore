@@ -1,9 +1,3 @@
-# Details
-name: Bug report
-<br>about: Report a bug about VaporCore
-
----
-
 **Description**
 A clear and concise description of what the bug is.
 
@@ -16,6 +10,7 @@ Paste the error message when it occurred.
 **Versions:**
  - Server's Version
  - Your Game's Version
+ - Addon's version
 
 **Additional Notes**
 Add any other notes here.
