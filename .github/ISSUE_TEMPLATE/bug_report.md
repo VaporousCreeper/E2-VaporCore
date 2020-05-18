@@ -1,6 +1,6 @@
 # Details
 name: Bug report
-about: Report a bug about VaporCore
+<br>about: Report a bug about VaporCore
 
 ---
 
