@@ -1,9 +1,22 @@
 E2Lib.RegisterExtension("VaporCore", false, "Useful Functions For Major E2s.")
 
 --[[
-	Version: 1.0.5
+	Version: 1.1
 
+	! Renamed findAllByClass to entitiesByClass
+	! Renamed findAllByModel to entitiesByModel
+
+	+ Added entities function
+	+ Added repetitions to timers and timerExists function
 	+ Added cooldowns to advHintPlayer and playLocalSound
+	+ Given the ability to target player with playLocalSound
+	+ Logs ,for functions like playLocalSound, in the target's console will no longer occur when targeting yourself
+
+	- Removed nearestEntityDistance function
+	- Removed the table returns for entitiesByClass and entitiesByModel
+	
+	^ Fixed functions that returning tables instead of arrays
+	^ Minor performance improvements
 
 ]]
 
@@ -169,7 +182,7 @@ end
 
 ---------------------- entitys ----------------------
 __e2setcost(10)
-e2function array entitys()
+e2function array entities()
 	local out = {}
 
 	for i,e in pairs(ents.GetAll()) do
@@ -181,7 +194,7 @@ e2function array entitys()
 end
 
 __e2setcost(5)
-e2function array entitysByModel(string model)
+e2function array entitiesByModel(string model)
 	local out = {}
 
 	for _,e in ipairs(ents.GetAll()) do
@@ -193,7 +206,7 @@ e2function array entitysByModel(string model)
 end
 
 __e2setcost(5)
-e2function array entitysByClass(string class)
+e2function array entitiesByClass(string class)
 	local out = {}
 
 	for _,e in ipairs(ents.GetAll()) do
@@ -225,4 +238,4 @@ e2function number timerExists(string name)
 	return 0
 end
 
-MsgC(Color(255,161,0),"[VaporCore] ",Color(255,255,255),"Load
+MsgC(Color(255,161,0),"[VaporCore] ",Color(255,255,255),"Loaded expression2 core.\n")
