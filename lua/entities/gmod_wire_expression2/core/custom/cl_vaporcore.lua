@@ -1,5 +1,5 @@
 E2Helper.Descriptions["canAdvHint"] = "Returns 1 if advHintPlayer if the function is enabled and the cooldown has ended, otherwise 0"
-E2Helper.Descriptions["advHintPlayer"] = "Hints a player with the 'text' and with the icon enum (https://wiki.facepunch.com/gmod/Enums/NOTIFY use the Decimal) and it prints on the console player's who it was from, Defs: enum - 0 and delay - 3 seconds"
+E2Helper.Descriptions["advHintPlayer"] = "Hints a player with the 'text' and with the icon enum (https://wiki.facepunch.com/gmod/Enums/NOTIFY use Decimal) and it prints on the console player's who it was from, Defs: enum - 0 and delay - 3 seconds"
 
 E2Helper.Descriptions["canPlayLocalSound"] = "Returns 1 if advHintPlayer if the function is enabled and the cooldown has ended, otherwise 0"
 E2Helper.Descriptions["playLocalSound"] = "Plays a ui sound that your target can only hear."
