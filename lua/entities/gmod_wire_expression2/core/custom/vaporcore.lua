@@ -1,22 +1,9 @@
 E2Lib.RegisterExtension("VaporCore", false, "Useful Functions For Major E2s.")
 
 --[[
-	Version: 1.1
+	Version: 1.1.1
 
-	! Renamed findAllByClass to entitiesByClass
-	! Renamed findAllByModel to entitiesByModel
-
-	+ Added entities function
-	+ Added repetitions to timers and timerExists function
-	+ Added cooldowns to advHintPlayer and playLocalSound
-	+ Given the ability to target player with playLocalSound
-	+ Logs ,for functions like playLocalSound, in the target's console will no longer occur when targeting yourself
-
-	- Removed nearestEntityDistance function
-	- Removed the table returns for entitiesByClass and entitiesByModel
-	
-	^ Fixed functions that returning tables instead of arrays
-	^ Minor performance improvements
+	^ Minor spelling errors 
 
 ]]
 
@@ -32,10 +19,10 @@ VaporCore.Cooldowns.advHintPlayer = {}
 VaporCore.Cooldowns.playLocalSound = {}
 
 VaporCore.advHintPlayer_enable = CreateConVar("vaporcore_advHintPlayer_enable","1",FCVAR_ARCHIVE,"Enables/Disables advHintPlayer function")
-VaporCore.advHintPlayer_cooldown = CreateConVar("vaporcore_advHintPlayer_cooldown","100",FCVAR_ARCHIVE,"Sets the amount of miliseconds for the function to wait before it can excute again.")
+VaporCore.advHintPlayer_cooldown = CreateConVar("vaporcore_advHintPlayer_cooldown","100",FCVAR_ARCHIVE,"Sets the amount of miliseconds for the function to wait before it can execute again.")
 
 VaporCore.playLocalSound_enable = CreateConVar("vaporcore_playLocalSound_enable","1",FCVAR_ARCHIVE,"Enables/Disables playLocalSound function")
-VaporCore.playLocalSound_cooldown = CreateConVar("vaporcore_playLocalSound_cooldown","100",FCVAR_ARCHIVE,"Sets the amount of miliseconds for the function to wait before it can excute again.")
+VaporCore.playLocalSound_cooldown = CreateConVar("vaporcore_playLocalSound_cooldown","100",FCVAR_ARCHIVE,"Sets the amount of miliseconds for the function to wait before it can execute again.")
 
 ---------------------- Timer Support ----------------------
 	local timerid = 0
@@ -180,7 +167,7 @@ e2function entity vector:nearestEntity(array ents)
 	return out
 end
 
----------------------- entitys ----------------------
+---------------------- entities ----------------------
 __e2setcost(10)
 e2function array entities()
 	local out = {}
