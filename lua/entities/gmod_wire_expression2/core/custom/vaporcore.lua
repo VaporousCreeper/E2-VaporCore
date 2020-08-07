@@ -1,9 +1,12 @@
 E2Lib.RegisterExtension("VaporCore", false, "Useful Functions For Major E2s.")
 
 --[[
-	Version: 1.1.1
+	Version: 1.1.2
 
-	^ Minor spelling errors 
+	+ Added player affecting functions to server logs. (Logs player's actions on functions like playLocalSound)
+
+	^ Improvements towards string compiling for logs
+	^ Minor spelling errors missed from last update
 
 ]]
 
@@ -68,6 +71,10 @@ VaporCore.playLocalSound_cooldown = CreateConVar("vaporcore_playLocalSound_coold
 	end
 
 ---------------------- Functions ----------------------
+	local function svr_log(type, log)
+		MsgC(Color(255,161,0) ,"[VaporCore] " ,Color(255,255,255) , type..": "..log.."\n")
+	end
+
 	local function advHint(target, from, text, enum, delay)
 		if not IsValid(target) or not IsValid(from) then return end
 		if VaporCore.Cooldowns.advHintPlayer[from] then return end
@@ -76,12 +83,15 @@ VaporCore.playLocalSound_cooldown = CreateConVar("vaporcore_playLocalSound_coold
 			net.WriteEntity(from)
 	
 			net.WriteString("advHintPlayer")
-			net.WriteString("Player '"..from:Nick().."'("..from:SteamID()..") is hinting to You")
+			net.WriteString( string.format("Player %s(%s) is hinting to You", from:Nick(), from:SteamID()) )
 		
 			net.WriteString(text)
 			net.WriteInt(enum,4)
 			net.WriteInt(delay,4)
 		net.Send(target)
+
+		local send = string.format("Player %s(%s) hinted to %s(%s).", from:Nick(), from:SteamID(), target:Nick(), target:SteamID())
+		svr_log("advHintPlayer", send)
 
 		VaporCore.Cooldowns.advHintPlayer[from] = true
 		timer.Simple(VaporCore.advHintPlayer_cooldown:GetInt()/1000, function()
@@ -97,10 +107,13 @@ VaporCore.playLocalSound_cooldown = CreateConVar("vaporcore_playLocalSound_coold
 			net.WriteEntity(from)
 
 			net.WriteString("playLocalSound")
-			net.WriteString("Player '"..from:Nick().."'("..from:SteamID()..") is playing ui sound to You, Path: "..path)
+			net.WriteString( string.format("Player %s(%s) is playing a ui sound to You.\n            Path: %s", from:Nick(), from:SteamID(), path) )
 			
 			net.WriteString(path)
 		net.Send(target)
+
+		local send = string.format("Player %s(%s) played a ui sound to %s(%s).\n            Path: %s", from:Nick(), from:SteamID(), target:Nick(), target:SteamID(), path)
+		svr_log("playLocalSound", send)
 
 		VaporCore.Cooldowns.playLocalSound[from] = true
 		timer.Simple(VaporCore.playLocalSound_cooldown:GetInt()/1000, function()
